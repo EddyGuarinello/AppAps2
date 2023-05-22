@@ -5,6 +5,7 @@ import {
   ShadowsIntoLight_400Regular,
 } from "@expo-google-fonts/shadows-into-light";
 import { RobotoMono_400Regular } from "@expo-google-fonts/roboto-mono";
+import Artigos from "./components/artigos/Artigos";
 
 export default function Main() {
   let [fontsLoaded] = useFonts({
@@ -41,7 +42,9 @@ export default function Main() {
         >
           Artigos Recentes
         </Text>
-        <View style={styles.artigosBody}></View>
+        <View style={styles.artigosBody}>
+          <Artigos></Artigos>
+        </View>
       </View>
     </View>
   );
@@ -78,5 +81,9 @@ const styles = StyleSheet.create({
   },
   artigosBody: {
     minHeight: height * 0.6,
+    width: width,
+    flex: 1,
+    justifyContent: "center",
+    alignItems:"center"
   },
 });
