@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { ScrollView, Dimensions, StyleSheet, Text, View } from "react-native";
 import { useEffect } from "react";
 import {
   useFonts,
@@ -30,7 +30,7 @@ export default function Main() {
           Seu aplicativo Nº1 para treinos
         </Text>
       </View>
-      <View style={styles.body}>
+      <ScrollView style={styles.body}>
         <Text
           style={{
             textAlign: "center",
@@ -40,12 +40,12 @@ export default function Main() {
             marginTop: 5,
           }}
         >
-          Artigos Recentes
+          Treinos Recentes
         </Text>
         <View style={styles.artigosBody}>
-          <Artigos></Artigos>
+          <Artigos style={{ height: "auto", display: "flex" }}></Artigos>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -64,14 +64,12 @@ const styles = StyleSheet.create({
     color: "rgb(244,222,123)",
   },
   header: {
-    height: height * 0.2,
     backgroundColor: "black",
     width: width,
     display: "flex",
     justifyContent: "center",
   },
   body: {
-    height: height * 0.8,
     width: width,
   },
   tBody: {
@@ -82,8 +80,8 @@ const styles = StyleSheet.create({
   artigosBody: {
     minHeight: height * 0.6,
     width: width,
-    flex: 1,
+    display: "flex",
     justifyContent: "center",
-    alignItems:"center"
+    alignItems: "center",
   },
 });

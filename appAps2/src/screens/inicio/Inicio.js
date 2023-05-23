@@ -5,9 +5,8 @@ export default function Inicio() {
   return (
     <View style={styles.container}>
       <View style={styles.welcomeBox}>
-        <Text style={styles.text}>Olá!</Text>
         <Text style={styles.text}></Text>
-        <Text style={styles.text}>Faça Login para utilizar o APP</Text>
+        <Text style={styles.text}>Faça Login para utilizar o APP </Text>
       </View>
       <View style={styles.loginBox}>
         <Logar></Logar>

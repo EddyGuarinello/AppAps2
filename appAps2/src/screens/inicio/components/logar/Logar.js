@@ -49,7 +49,7 @@ export default function Logar() {
         title="Logar"
         onPress={() => navigation.navigate("Main")}
       ></Button>
-      <Text style={{ marginTop: 5 }}>Ainda não tem uma conta?</Text>
+      <Text style={{ marginTop: 5 }}>Ainda não tem uma conta? </Text>
       <TouchableOpacity onPress={handleLinkPress}>
         <Text
           style={{
