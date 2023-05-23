@@ -84,7 +84,7 @@ export default function Artigos() {
               }}
             ></Image>
             <Text style={{ textAlign: "center" }}> {item.corpo} </Text>
-            <Button style={{ marginTop: 0 }} title="ler mais"></Button>
+            <Button onPress={() => navigation.navigate("/artigo/" + item.rota)} style={{ marginTop: 0 }} title="ler mais"></Button>
           </View>
         </View>
       ))}
