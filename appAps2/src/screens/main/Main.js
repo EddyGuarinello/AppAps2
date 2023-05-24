@@ -6,7 +6,7 @@ import {
 } from "@expo-google-fonts/shadows-into-light";
 import { RobotoMono_400Regular } from "@expo-google-fonts/roboto-mono";
 import Artigos from "./components/artigos/Artigos";
-
+import Header from "../../components/header/Header";
 export default function Main() {
   let [fontsLoaded] = useFonts({
     ShadowsIntoLight_400Regular,
@@ -18,18 +18,7 @@ export default function Main() {
   }
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.titulo}>Get Fit</Text>
-        <Text
-          style={{
-            color: "rgb(244,222,123)",
-            fontSize: 16,
-            textAlign: "center",
-          }}
-        >
-          Seu aplicativo Nº1 para treinos
-        </Text>
-      </View>
+      <Header></Header>
       <ScrollView style={styles.body}>
         <Text
           style={{
@@ -56,18 +45,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     backgroundColor: "rgb(244,222,123)",
-  },
-  titulo: {
-    fontFamily: "ShadowsIntoLight_400Regular",
-    fontSize: 50,
-    textAlign: "center",
-    color: "rgb(244,222,123)",
-  },
-  header: {
-    backgroundColor: "black",
-    width: width,
-    display: "flex",
-    justifyContent: "center",
   },
   body: {
     width: width,

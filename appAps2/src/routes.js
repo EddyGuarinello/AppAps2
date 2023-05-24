@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Inicio from "./screens/inicio/Inicio";
 import Main from "./screens/main/Main";
 import Register from "./screens/inicio/components/register/Register";
+import Artigo from "./screens/main/components/artigo/Artigo";
 
 const Stack = createStackNavigator();
 
@@ -16,8 +17,9 @@ export default function Rotas() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="Inicio" component={Inicio} />
         <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Inicio" component={Inicio} />
+
         <Stack.Screen name="Artigo" component={Artigo} />
         <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>

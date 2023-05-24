@@ -14,8 +14,10 @@ import {
 } from "@expo-google-fonts/shadows-into-light";
 import { RobotoMono_400Regular } from "@expo-google-fonts/roboto-mono";
 import Icon from "react-native-vector-icons/AntDesign";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Artigos() {
+  const navigation = useNavigation();
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +86,11 @@ export default function Artigos() {
               }}
             ></Image>
             <Text style={{ textAlign: "center" }}> {item.corpo} </Text>
-            <Button onPress={() => navigation.navigate("/artigo/" + item.rota)} style={{ marginTop: 0 }} title="ler mais"></Button>
+            <Button
+              onPress={() => navigation.navigate("Artigo", item.id)}
+              style={{ marginTop: 0 }}
+              title="ler mais"
+            ></Button>
           </View>
         </View>
       ))}
@@ -94,7 +100,7 @@ export default function Artigos() {
 const { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   artigosWrap: {
-    marginTop: 10,
+    marginTop: 5,
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
@@ -103,8 +109,8 @@ const styles = StyleSheet.create({
   },
   artigoBox: {
     width: "95%",
-    height: height * 0.7,
-    marginTop: 30,
+    height: height * 0.75,
+    marginTop: 10,
     borderBottomStyle: "solid",
     borderTopColor: "black",
     borderWidth: 1.5,
