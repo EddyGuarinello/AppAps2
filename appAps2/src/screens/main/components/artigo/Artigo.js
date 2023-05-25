@@ -63,7 +63,11 @@ const Artigo = ({ route }) => {
             {item.titulo}
           </Text>
           <View style={styles.artBox}>
-            <YoutubePlayer height={300} play={false} videoId={"OI9Cq3GFHx0"} />
+            <YoutubePlayer
+              height={300}
+              play={"pause"}
+              videoId={"OI9Cq3GFHx0"}
+            />
             <Text
               style={{
                 fontFamily: "RobotoMono_400Regular",
