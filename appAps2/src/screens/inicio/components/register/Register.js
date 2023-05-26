@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   Text,
@@ -9,15 +12,41 @@ import {
 } from "react-native";
 
 export default function Register() {
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
+  const [nome, setNome] = useState("");
+  const [useremail, setUserEmail] = useState("");
   const [senha, setSenha] = useState("");
-
+  const [sobrenome, setSobrenome] = useState("");
+  const navigation = useNavigation();
   function registrar() {
-    if (user === "" || email === "" || senha === "") {
+    if (nome === "" || sobrenome === "" || useremail === "" || senha === "") {
       alert("Campo(s) não preenchido(s)");
       return;
     }
+    fetch("https://api-get-fit.vercel.app/register", {
+      method: "POST",
+      body: JSON.stringify({
+        email: useremail,
+        sobrenome: sobrenome,
+        password: senha,
+        nome: nome,
+        id: uuidv4(),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status === 400 || response.status === 401) {
+          throw new Error("Falha ao criar usuario.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert("Conta criada!");
+        navigation.navigate("Inicio");
+      })
+      .catch((error) => console.error(error));
   }
   return (
     <View style={styles.container}>
@@ -27,16 +56,22 @@ export default function Register() {
 
       <TextInput
         style={styles.input}
-        placeholder="Usuário"
-        value={user}
-        onChangeText={(user) => setUser(user)}
+        placeholder="Nome"
+        value={nome}
+        onChangeText={(nome) => setNome(nome)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Sobrenome"
+        value={sobrenome}
+        onChangeText={(sobrenome) => setSobrenome(sobrenome)}
       />
 
       <TextInput
         style={styles.input}
         placeholder="E-mail"
-        value={email}
-        onChangeText={(email) => setEmail(email)}
+        value={useremail}
+        onChangeText={(useremail) => setUserEmail(useremail)}
       />
 
       <TextInput

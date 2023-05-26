@@ -17,7 +17,7 @@ import {
 
 export default function Logar() {
   const navigation = useNavigation();
-  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const handleLinkPress = () => {
     navigation.navigate("Register");
@@ -30,25 +30,52 @@ export default function Logar() {
   if (!fontsLoaded) {
     return null;
   }
+  function Login() {
+    if (email === "" || senha === "") {
+      alert("Campo(s) não preenchido(s)");
+      return;
+    }
+    try {
+      fetch("https://api-get-fit.vercel.app/login", {
+        method: "POST",
+        body: JSON.stringify({ email: email, password: senha }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.status === 400 || response.status === 401) {
+            alert("Usuário ou senha incorretos.");
+            throw new Error("Usuário ou senha incorretos.");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          alert("Logado com sucesso!");
+          navigation.navigate("Main");
+        });
+    } catch (error) {
+      console.error(error);
+      alert(error);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Login"
-        value={login}
-        onChangeText={(text) => setLogin(text)}
+        placeholder="Email"
+        value={email}
+        onChangeText={(email) => setEmail(email)}
       />
       <TextInput
         style={styles.input}
         placeholder="Senha"
         secureTextEntry={true}
         value={senha}
-        onChangeText={(text) => setSenha(text)}
+        onChangeText={(senha) => setSenha(senha)}
       />
-      <Button
-        title="Logar"
-        onPress={() => navigation.navigate("Main")}
-      ></Button>
+      <Button title="Logar" onPress={Login}></Button>
       <Text style={{ marginTop: 5 }}>Ainda não tem uma conta? </Text>
       <TouchableOpacity onPress={handleLinkPress}>
         <Text
