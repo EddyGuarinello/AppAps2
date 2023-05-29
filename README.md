@@ -1,4 +1,4 @@
-# AppAps2
+#AppGetFitAPS2
 
 Projeto criado para a Atividade Pratica Supervisionada da disciplina Desenvolvimento de Aplicações Móveis na Unicarioca.
 
